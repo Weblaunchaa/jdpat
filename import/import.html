@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>The MultiMedia Release Platform</title>
+<link rel="stylesheet" href="http://mmrp.reeqi.me/css/bootstrap.css" />
+<link rel="stylesheet" href="http://mmrp.reeqi.me/admin/css/style.css" />
+<link rel="stylesheet" href="http://mmrp.reeqi.me/css/external.css" />
+<link rel="stylesheet" href="http://mmrp.reeqi.me/css/mmrp_v2.css" />
+<link rel="stylesheet" href="css/import.css"/>
+<style type="text/css">
+.mmrp_sys_form .mmrp_sys_projinfo .mmrp_form_radio {width:auto;margin:0 3px 0 0;display:inline-block;}
+.controls-code-area {margin:5px 0 10px;}
+.hide {display:none;}
+.error {color:red;}
+</style>
+
+</head>
+<body>
+<!--导航组件 S-->
+<header class="mmrp_sys_header">
+	<section> 
+		<h1>MMRP</h1>
+		<ul class="mod_nav">
+			<li><a href="##">新建活动</a></li>
+			<li><a href="##">活动查询</a></li>
+			<li><a href="##">推荐位管理</a></li>
+		</ul>
+		<div class="mod_user"><a href="##">登录</a> [ pufentan | <a href="##">注销</a> ]</div>
+	</section>
+	<ul class="mod_nav_sub" style="display:none;">
+		<li><a href="##">背景上传</a></li>
+		<li><a href="##">配置修改</a></li>
+		<li><a href="##">添加模块</a></li>
+		<li><a href="##">预览效果</a></li>
+		<li>
+			<a href="##">保存</a><i class="arrow"></i>
+			<ul class="mod_nav_child">
+				<li><a href="##">保存为模板</a></li>
+				<li><a href="##">保存为草稿</a></li>
+			</ul>
+		</li>
+		<li><a href="##">内容发布</a></li>
+	</ul>	
+</header>
+<!--导航组件 E-->
+<div class="mmrp_sys_form">
+	<form class="mmrp_sys_projinfo form-horizontal" enctype="multipart/form-data" action="get.php" method="post" id="upload_form">
+		<legend>活动导入</legend>
+
+        <div id="J_upload" class="pop_upload"></div>
+	 	<div class="next"><button type="submit" class="btn btn-primary" id="form_submit">&nbsp;&nbsp;&nbsp;&nbsp;确定&nbsp;&nbsp;&nbsp;&nbsp;</button></div>
+	</form>
+</div>
+<footer class="mmrp_sys_footer">
+	<div>
+		<p class="copyright"><span>&copy;</span> 2011-2012 <a href="about.htm">MMRP Dev.team</a></p>
+		<p class="support">Power by HTML5 &amp; CSS3. Support for <a href="http://www.google.com/chrome/" target="_blank">Chrome.</a></p>
+	</div>
+</footer>
+
+
+<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+<script src="js/fileuploader.js"></script>
+<script src="js/import.js"></script>
+<script type="text/javascript">
+$("#upload_code,#upload_zip").click(function(){
+    if($(this).attr("id")=='upload_code'){
+        $("#controls-code-area").removeClass("hide");
+        $("#controls-file-upload").addClass("hide"); 
+    }
+    if($(this).attr("id")=='upload_zip'){
+        $("#controls-code-area").addClass("hide");
+        $("#controls-file-upload").removeClass("hide");
+    }
+});
+$("#form_submit").click(function(){
+        //zip上传
+        if($("#upload_zip:checked").length==1){
+            var fileZip = $.trim($("#input_uploadFile").val());
+            var pattern = /^([a-zA-Z0-9_\/-:\\])+\.zip$/;
+            var flag = pattern.test(fileZip);
+            if(!flag||fileZip==""){
+                $("#input_uploadFile_error").html("请上传zip后缀格式的压缩文件");//提示错误
+                $("#input_uploadFile").click(function(){$("#input_uploadFile_error").html("");});//点击的时候，把错误去掉
+                return false;
+            }
+        } else if ($("#upload_code:checked").length==1){
+            var $uploadCode =$("#txta_uploadCode");
+            if($uploadCode.val()=="") {
+                $uploadCode.after('<p class="error">呀，为什么不输入点代码呢？</p>');
+                $uploadCode.focus(function(){$(this).next("p").remove();});
+            }
+        } else {
+            //两个都不填报错
+            alert("填一个吧");
+            return false;
+        } 
+        
+        /*$.post("get.php",{},function(data){
+            alert("dd");
+        });*/
+        $("#upload_form").submit();
+    return false;
+});
+
+</script>
+</body>
+</html>
