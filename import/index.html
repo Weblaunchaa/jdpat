@@ -32,7 +32,9 @@
         <div id="J_uploadCnt" class="upload hide">
             <div class="control-group">
                 <label class="control-label" for="J_name">需求名称</label>
-                <div class="controls"><input id="J_name" data-db-name="jdpat_name" type="text" placeholder="(如：杨千桦首唱会）将出现您要创建的网页的浏览器标题上" /></div>
+                <div class="controls">
+                    <input id="J_name" data-db-name="jdpat_name" type="text" placeholder="(如：杨千桦首唱会）将出现您要创建的网页的浏览器标题上" />
+                </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="J_desc">需求描述</label>
@@ -41,8 +43,8 @@
             <div class="control-group">
                 <label class="control-label" for="J_path">活动模板</label>
                 <div class="controls">
-                    <select id="J_templateId" data-db-name="jdpat_template_id">
-                        <option value="1">模板一</option>
+                    <select id="J_layout" data-db-name="jdpat_layout_id">
+                        <option value="1" selected>模板一</option>
                         <option value="2">模板2</option>
                     </select>
                 </div>
@@ -50,11 +52,15 @@
             <div class="control-group">
                 <label class="control-label" for="J_path">活动路径</label>
                 <div class="controls">
+                    <select data-db-name="jdpat_url" id="J_jdpatUrl">
+
+                    </select>
                     <input type="url" id="J_path" class="path" data-db-name="jdpat_path" readonly  />
                 </div>
             </div>
             <!--高级选项-->
             <div class="upload_adv">
+                <input id="J_zip" data-db-name="jdpat_zip" type="hidden" placeholder="压缩包路径" />
                 <p><a href="##" id="J_uploadAdvBtn"><i>■</i> 高级选项</a></p>
                 <div id="J_uploadAdv" class="hide">
                     <div class="control-group">

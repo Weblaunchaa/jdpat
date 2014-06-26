@@ -33,7 +33,7 @@
                     RestApi.unzip(responseJSON.filename).done(function(data){
                         Fun.setDbData(data.jdpat,'#J_uploadCnt');
                         Fun.setUrlParam('id',data.jdpat.jdpat_id);
-                        $('#J_path').val( Pat.config.publishUrl + data.jdpat.jdpat_id + '.html');
+//                        $('#J_url').val(  + data.jdpat.jdpat_id + '.html');
                     })
                 }
             }
@@ -80,12 +80,24 @@
         })
     };
 
+    var initUrl = function(){
+        RestApi.getUrl().done(function(data){
+            if(data && data.url && data.url.length){
+                var str = '';
+                data.url.forEach(function(item){
+                    str += '<option value="'+ item.url_link +'">'+ item.url_link +'</option>';
+                });
+                $('#J_jdpatUrl').html(str);
+                initPat();
+            }
+        })
+    };
 
 
 
 
     var init = function(){
-        initPat();
+        initUrl();
         upload('J_upload','../zip/');
         submitForm();
         toggleAdv();
