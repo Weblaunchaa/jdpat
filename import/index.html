@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JDPAT 活动导入</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/mmrp_v2.css" />
+<link rel="stylesheet" href="css/import.css"/>
+
+</head>
+<body>
+<!--导航组件 S-->
+<header class="mmrp_sys_header">
+	<section> 
+		<h1>JDPAT</h1>
+		<ul class="mod_nav">
+			<li><a href="index.html">导入活动</a></li>
+			<li><a href="list.html">活动列表</a></li>
+		</ul>
+		<div class="mod_user">
+            [ <span id="J_user"></span> | <a href="http://ppms.paipaioa.com/index.php?action=exit">注销</a> ]
+        </div>
+	</section>
+</header>
+<!--导航组件 E-->
+<div class="mmrp_sys_form">
+	<form class="mmrp_sys_projinfo form-horizontal" enctype="multipart/form-data" method="get" id="J_uploadForm">
+		<legend>活动导入</legend>
+
+        <div id="J_upload" class="pop_upload"></div>
+
+        <div id="J_uploadCnt" class="upload hide">
+            <div class="control-group">
+                <label class="control-label" for="J_name">需求名称</label>
+                <div class="controls"><input id="J_name" data-db-name="jdpat_name" type="text" placeholder="(如：杨千桦首唱会）将出现您要创建的网页的浏览器标题上" /></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="J_desc">需求描述</label>
+                <div class="controls"><textarea id="J_desc" data-db-name="jdpat_desc" rows="3" placeholder="80个字以内，展示在搜索引擎上；吸引人的描述，能带来更大的点击率哦！"></textarea></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="J_path">活动模板</label>
+                <div class="controls">
+                    <select id="J_templateId" data-db-name="jdpat_template_id">
+                        <option value="1">模板一</option>
+                        <option value="2">模板2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="J_path">活动路径</label>
+                <div class="controls">
+                    <input type="url" id="J_path" class="path" data-db-name="jdpat_path" readonly  />
+                </div>
+            </div>
+            <!--高级选项-->
+            <div class="upload_adv">
+                <p><a href="##" id="J_uploadAdvBtn"><i>■</i> 高级选项</a></p>
+                <div id="J_uploadAdv" class="hide">
+                    <div class="control-group">
+                        <label class="control-label" for="J_html">HTML</label>
+                        <div class="controls"><textarea id="J_html" data-db-name="jdpat_html" rows="3" placeholder="80个字以内，展示在搜索引擎上；吸引人的描述，能带来更大的点击率哦！"></textarea></div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="J_css">CSS</label>
+                        <div class="controls"><textarea id="J_css" data-db-name="jdpat_css" rows="3" placeholder="80个字以内，展示在搜索引擎上；吸引人的描述，能带来更大的点击率哦！"></textarea></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="action">
+            <button type="submit" class="btn btn-primary" id="form_submit">&nbsp;&nbsp;&nbsp;&nbsp;确定&nbsp;&nbsp;&nbsp;&nbsp;</button>
+        </div>
+	</form>
+</div>
+<!--<footer class="mmrp_sys_footer">-->
+	<!--<div>-->
+		<!--<p class="copyright"><span>&copy;</span> 2011-2012 <a href="about.htm">JD UED TEMP</a></p>-->
+		<!--<p class="support">Power by HTML5 &amp; CSS3. Support for <a href="http://www.google.com/chrome/" target="_blank">Chrome.</a></p>-->
+	<!--</div>-->
+<!--</footer>-->
+
+
+<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/fileuploader.js"></script>
+<script src="js/func.js"></script>
+<script src="js/rest.js"></script>
+<script src="js/import.js"></script>
+</body>
+</html>

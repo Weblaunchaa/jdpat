@@ -165,9 +165,9 @@ class qqFileUploader {
 }
 
 // list of valid extensions, ex. array("jpeg", "xml", "bmp")
-$allowedExtensions = array();
+$allowedExtensions = array('zip');
 // max file size in bytes
-$sizeLimit = 2 * 1024 * 1024;
+$sizeLimit = 8 * 1024 * 1024;
 
 $upload_folder = 'project';
 $replaceOldFile = TRUE;
