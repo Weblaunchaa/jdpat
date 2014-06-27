@@ -7,7 +7,8 @@
 (function(Pat){
 
     var $uploadCnt = $('#J_uploadCnt'),
-        $upload = $('#J_upload');
+        $upload = $('#J_upload'),
+        $view = $('#J_view');
 
     var RestApi = Pat.RestApi,
         Fun = Pat.Fun;
@@ -33,7 +34,7 @@
                     RestApi.unzip(responseJSON.filename).done(function(data){
                         Fun.setDbData(data.jdpat,'#J_uploadCnt');
                         Fun.setUrlParam('id',data.jdpat.jdpat_id);
-//                        $('#J_url').val(  + data.jdpat.jdpat_id + '.html');
+                        $view.attr('href', 'project/'  + data.jdpat.jdpat_path);
                     })
                 }
             }
@@ -53,6 +54,7 @@
             RestApi.putPatById(data).done(function(d){
                 if(d && d.jdpat && d.jdpat.jdpat_id){
                     alert('活动导入成功！');
+                    window.location.href = 'list.html'
                 }
             });
             return false;
@@ -67,6 +69,7 @@
                 Fun.setDbData(data.jdpat,'#J_uploadCnt');
                 $uploadCnt.show();
                 $upload.hide();
+                $view.attr('href', 'project/'  + data.jdpat.jdpat_path);
             }
         })
     };
